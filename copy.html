@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Pengelolaan penumpang</title>
+        <style>
+            .container {
+                width: 70%;
+            }
+            html * {
+                font-size: 16px;
+                font-family: Helvetica;
+            }
+            .slot {
+                width: 100px;
+                height: 100px;
+                border: 1px solid black;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+            }
+            .slotSisi {
+                display: flex;
+                justify-content: flex-end;
+                margin: 50px 0;
+            }
+            .container input[type=text] {
+                padding: 10px;
+                width: 100%;
+            }
+            .btn {
+                display: flex;
+                justify-content: space-around;
+                margin: 50px 0;
+            }
+            .buttonPenumpang {
+                color: #ffffff;
+                padding: 10px;
+                border-radius: 5px;
+                font-size: 18pt;
+                border: none;
+            }
+            .button1 {
+                background-color: #008000;
+            }
+            .button2 {
+                background-color: #ffa500;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="container">
+            <div class="slotSisi">
+                <div class="slot"><p id="1">Atilla</p></div>
+                <div class="slot"><p id="2"></p></div>
+                <div class="slot"><p id="3"></p></div>
+                <div class="slot"><p id="4"></p></div>
+                <div class="slot"><p id="5"></p></div>
+                <div class="slot"><p id="6"></p></div>
+            </div>
+            <div class="slotSisi">
+                <div class="slot"><p id="7"></p></div>
+                <div class="slot"><p id="8"></p></div>
+                <div class="slot"><p id="9"></p></div>
+                <div class="slot"><p id="10"></p></div>
+            </div>
+
+            <input type="text" name="nama" placeholder="Masukkan nama penumpang">
+            <div class="btn">
+                <button class="buttonPenumpang button1" onclick="naikinPenumpang()">Naikin penumpang</button>
+                <button class="buttonPenumpang button2">Turunin penumpang</button>
+            </div>
+        </div>
+    </body>
+    <script>
+        function naikinPenumpang() {
+            document.getElementById('1').innerHTML = 'Naufal';
+        }
+    </script>
+    <!-- <script src="test.js"></script> -->
+</html>
