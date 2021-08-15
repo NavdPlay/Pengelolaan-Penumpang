@@ -20,6 +20,10 @@
                 display: flex;
                 justify-content: center;
                 align-items: center;
+                background-color: #00cc00;
+            }
+            .slot p {
+                text-align: center;
             }
             .slotSisi {
                 display: flex;
@@ -36,48 +40,120 @@
                 margin: 50px 0;
             }
             .buttonPenumpang {
+                cursor: pointer;
                 color: #ffffff;
                 padding: 10px;
                 border-radius: 5px;
                 font-size: 18pt;
                 border: none;
             }
+            .button1, .button2, .button3 {
+                transition: box-shadow .3s;
+            }
             .button1 {
                 background-color: #008000;
             }
+            .button1:hover {
+                box-shadow: 0 0 11px rgba(0, 109, 0, 1);
+            }
             .button2 {
                 background-color: #ffa500;
+            }
+            .button2:hover {
+                box-shadow: 0 0 11px rgba(206, 134, 0, 1);
             }
         </style>
     </head>
     <body>
         <div class="container">
             <div class="slotSisi">
-                <div class="slot"><p id="1">Atilla</p></div>
-                <div class="slot"><p id="2"></p></div>
-                <div class="slot"><p id="3"></p></div>
-                <div class="slot"><p id="4"></p></div>
-                <div class="slot"><p id="5"></p></div>
-                <div class="slot"><p id="6"></p></div>
+                <div class="slot" id="div1"><p id="1"></p></div>
+                <div class="slot" id="div2"><p id="2"></p></div>
+                <div class="slot" id="div3"><p id="3"></p></div>
+                <div class="slot" id="div4"><p id="4"></p></div>
+                <div class="slot" id="div5"><p id="5"></p></div>
+                <div class="slot" id="div6"><p id="6"></p></div>
             </div>
             <div class="slotSisi">
-                <div class="slot"><p id="7"></p></div>
-                <div class="slot"><p id="8"></p></div>
-                <div class="slot"><p id="9"></p></div>
-                <div class="slot"><p id="10"></p></div>
+                <div class="slot" id="div7"><p id="7"></p></div>
+                <div class="slot" id="div8"><p id="8"></p></div>
+                <div class="slot" id="div9"><p id="9"></p></div>
+                <div class="slot" id="div10"><p id="10"></p></div>
             </div>
 
-            <input type="text" name="nama" placeholder="Masukkan nama penumpang">
+            <input type="text" id="nama" placeholder="Masukkan nama penumpang">
+            <p id="status"></p>
             <div class="btn">
                 <button class="buttonPenumpang button1" onclick="naikinPenumpang()">Naikin penumpang</button>
-                <button class="buttonPenumpang button2">Turunin penumpang</button>
+                <button class="buttonPenumpang button2" onclick="turuninPenumpang()">Turunin penumpang</button>
             </div>
         </div>
     </body>
     <script>
+        var penumpang = [];
+        var pengenal = '';
         function naikinPenumpang() {
-            document.getElementById('1').innerHTML = 'Naufal';
+            var nama = document.getElementById('nama').value;
+            if (penumpang.length < 10) {
+                for (var i = 0; i < 10; i++) {
+                    if (penumpang[i] == nama) {
+                        document.getElementById('status').innerHTML = nama + ' sudah ada di dalam angkot!';
+                        document.getElementById('status').style.color = 'red';
+                        return nama;
+                    }
+                }
+                document.getElementById('status').innerHTML = '';
+                penumpang.push(nama);
+            } else {
+                document.getElementById('status').innerHTML = 'Angkot sudah penuh!';
+                document.getElementById('status').style.color = 'red';
+            }
+            for (var i = 0; i < penumpang.length; i++) {
+                pengenal = i + 1;
+                document.getElementById(pengenal.toString()).innerHTML = penumpang[i];
+            }
+            checkIfEmpty();
+        }
+        function turuninPenumpang() {
+            if (penumpang.length == 0) {
+                document.getElementById('status').innerHTML = 'Angkot masih kosong!';
+                document.getElementById('status').style.color = 'red';
+            } else {
+                var nama = document.getElementById('nama').value;
+                for (var i = 0; i < penumpang.length; i++) {
+                    if (penumpang[i] === nama) {
+                        penumpang.splice(i, 1);
+                        document.getElementById('status').innerHTML = '';
+                    } else if (i === penumpang.length - 1) {
+                        document.getElementById('status').innerHTML = nama + ' tidak ada di dalam angkot!';
+                        document.getElementById('status').style.color = 'red';
+                    }
+                }
+            }
+            for (var i = 0; i <= penumpang.length; i++) {
+                pengenal = i + 1;
+                if (penumpang[i] === undefined) {
+                    document.getElementById(pengenal.toString()).innerHTML = '';
+                } else {
+                    document.getElementById(pengenal.toString()).innerHTML = penumpang[i];
+                }
+            }
+            checkIfEmpty();
+        }
+
+        function checkIfEmpty() {
+            for (var i = 1; i <= 10; i++) {
+                var ID = 'div' + i;
+                var el = document.getElementById(i);
+                var parentDiv = document.getElementById(ID.toString());
+                if (el.innerHTML == undefined) {
+                    parentDiv.style.backgroundColor = '#00cc00';
+                } else if (el.innerHTML == '') {
+                    parentDiv.style.backgroundColor = '#00cc00';
+                } else {
+                    parentDiv.style.backgroundColor = '#ff0000';
+                }
+            }
         }
     </script>
-    <!-- <script src="test.js"></script> -->
 </html>
