@@ -1,0 +1,56 @@
+.container {
+    width: 70%;
+}
+html * {
+    font-size: 16px;
+    font-family: Helvetica;
+}
+.slot {
+    width: 100px;
+    height: 100px;
+    border: 1px solid black;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #00cc00;
+}
+.slot p {
+    text-align: center;
+}
+.slotSisi {
+    display: flex;
+    justify-content: flex-end;
+    margin: 50px 0;
+}
+.container input[type=text] {
+    padding: 10px;
+    width: 100%;
+}
+.btn {
+    display: flex;
+    justify-content: space-around;
+    margin: 50px 0;
+}
+.buttonPenumpang {
+    cursor: pointer;
+    color: #ffffff;
+    padding: 10px;
+    border-radius: 5px;
+    font-size: 18pt;
+    border: none;
+}
+.button1, .button2, .button3 {
+    transition: box-shadow .3s;
+}
+.button1 {
+    background-color: #008000;
+}
+.button1:hover {
+    box-shadow: 0 0 11px rgba(0, 109, 0, 1);
+}
+.button2 {
+    background-color: #ffa500;
+}
+.button2:hover {
+    box-shadow: 0 0 11px rgba(206, 134, 0, 1);
+}
